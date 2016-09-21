@@ -23,29 +23,35 @@ then zip "dist" directory and upload zip file to staticresource as "ReactTableRe
 ## Visualforce Page
 
 ```javascript
-<apex:page>
+<apex:page >
 <head>
 <script src="../../soap/ajax/37.0/connection.js" type="text/javascript"></script>
 <script src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
 <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
 </head>
 
-<div id="content"></div>
+<div id="Component3ReactTableContent"></div>
 
 <script>
-	sforce.connection.sessionId='{!GETSESSIONID()}';
-	var SFORCE_AJAX = sforce;
-	var SOBJECT_NAME = "Account";
-	var IS_RELATION_TABLE = "False";
-	var RELATION_NAME = "ChildAccounts";
-	var RELATION_FIELD_NAME = "ParentId";
-	var LIST_COLUMNS = "[Name, Website, LastActivityDate, LastModifiedDate, IsPartner, ParentId]";
-	var USE_PAGING = "true";
-	var RESULT_PER_PAGE = "20";
-	var USE_FIXED_HEADER = "false";
-	var HEIGHT = "";
-	var SHOW_FILTER = "true";
+	var COMPONENT_ID = "Component3";
 	var RECORD_ID = "";
+	sforce.connection.sessionId = '{!GETSESSIONID()}';
+	var SFORCE_AJAX = sforce;
+	var REACT_TABLE_PARAMS = {};
+
+	REACT_TABLE_PARAMS["Component3"] = {
+		SOBJECT_NAME: "Account",
+		RELATION_NAME: "",
+		RELATION_FIELD_NAME: "ParentId",
+		LIST_COLUMNS: "[Name, Website, LastActivityDate, LastModifiedDate, IsPartner, ParentId]",
+		USE_PAGING: "true",
+		RESULT_PER_PAGE: "20",
+		USE_FIXED_HEADER: "false",
+		HEIGHT: "",
+		SHOW_FILTER: "true",
+		IS_RELATION_TABLE: "false",
+		RECORD_ID: ""
+	}
 </script>
 
 <script src="{!URLFOR($Resource.ReactTableResource, 'dist/bundle.js')}"></script>
