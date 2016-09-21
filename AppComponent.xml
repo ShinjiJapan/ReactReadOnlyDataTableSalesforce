@@ -29,31 +29,36 @@
 			</PutablePlaces>
 		  <DirectComponent>
 			 <DirectComponentBody><![CDATA[
-			<div id="content"></div>
-					<script src="../../soap/ajax/37.0/connection.js" type="text/javascript"></script>
+			 		<div id="{!currentAppComID + 'ReactTableContent'}"></div>
 					<script src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
 					<script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
 					
 					<script>
-					sforce.connection.sessionId='{!GETSESSIONID()}';
-					var SFORCE_AJAX = sforce;
-					SFORCE_AJAX.userId = '{!URLFOR($User.Id, "")}';
-					var SOBJECT_NAME = "{!appComponentProperty[currentAppComID]['prop_sObjectComboBox.sObject']}";
-					var RELATION_NAME = "{!appComponentProperty[currentAppComID]['prop_sObjectComboBox.rName']}";
-					var RELATION_FIELD_NAME = "{!appComponentProperty[currentAppComID]['prop_sObjectComboBox.rField']}";
-					var LIST_COLUMNS = "{!appComponentProperty[currentAppComID]['childSObjectListColumns']}";
-					var USE_PAGING = "{!appComponentProperty[currentAppComID]['usePaging']}";
-					var RESULT_PER_PAGE = "{!appComponentProperty[currentAppComID]['resultsPerPage']}";
-					var USE_FIXED_HEADER = "{!appComponentProperty[currentAppComID]['useFixedHeader']}";
-					var HEIGHT = "{!appComponentProperty[currentAppComID]['bodyHeight']}";
-					var SHOW_FILTER = "{!appComponentProperty[currentAppComID]['showFilter']}";
-					var IS_RELATION_TABLE = "{!appComponentProperty[currentAppComID]['isRelationTable']}";
-					var RECORD_ID = SkyEditor.RecordId;
-					if(!NEXT_APP){
-						var NEXT_APP = [];
-					
-					}
-					
+						var COMPONENT_ID = "{!currentAppComID}";
+
+						if(!REACT_TABLE_PARAMS){
+							var REACT_TABLE_PARAMS = {};
+						}
+						
+						if(!SFORCE_AJAX){
+							sforce.connection.sessionId = '{!GETSESSIONID()}';
+							sforce.userId = '{!URLFOR($User.Id, "")}';
+							var SFORCE_AJAX = sforce;
+						}
+
+						REACT_TABLE_PARAMS[COMPONENT_ID] = {
+							SOBJECT_NAME: "{!appComponentProperty[currentAppComID]['prop_sObjectComboBox.sObject']}",
+							RELATION_NAME: "{!appComponentProperty[currentAppComID]['prop_sObjectComboBox.rName']}",
+							RELATION_FIELD_NAME: "{!appComponentProperty[currentAppComID]['prop_sObjectComboBox.rField']}",
+							LIST_COLUMNS: "{!appComponentProperty[currentAppComID]['childSObjectListColumns']}",
+							USE_PAGING: "{!appComponentProperty[currentAppComID]['usePaging']}",
+							RESULT_PER_PAGE: "{!appComponentProperty[currentAppComID]['resultsPerPage']}",
+							USE_FIXED_HEADER: "{!appComponentProperty[currentAppComID]['useFixedHeader']}",
+							HEIGHT: "{!appComponentProperty[currentAppComID]['bodyHeight']}",
+							SHOW_FILTER: "{!appComponentProperty[currentAppComID]['showFilter']}",
+							IS_RELATION_TABLE: "{!appComponentProperty[currentAppComID]['isRelationTable']}",
+							RECORD_ID: "{!record.Id}"
+						}
 					</script>
 
 					<script src="{!URLFOR($Resource.tanaReactResource, 'dist/bundle.js')}"></script>
