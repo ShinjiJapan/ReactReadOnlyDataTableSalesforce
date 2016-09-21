@@ -1,4 +1,5 @@
 # React ReadOnly DataTable
+This component is React ReadOnly DataTable for Salesforce.
 
 ## Install our dependencies
 
