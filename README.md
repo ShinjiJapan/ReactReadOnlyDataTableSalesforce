@@ -1,4 +1,5 @@
 # React ReadOnly DataTable
+This component is React ReadOnly DataTable for Salesforce.
 
 ## Install our dependencies
 
@@ -29,8 +30,6 @@ then zip "dist" directory and upload zip file to staticresource as "ReactTableRe
 <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
 </head>
 
-<apex:form id="sve_form1"   styleClass="sve_form1"   >
-
 <div id="content"></div>
 
 <script>
@@ -50,6 +49,5 @@ then zip "dist" directory and upload zip file to staticresource as "ReactTableRe
 </script>
 
 <script src="{!URLFOR($Resource.ReactTableResource, 'dist/bundle.js')}"></script>
-</apex:form>
 </apex:page>
 ```
