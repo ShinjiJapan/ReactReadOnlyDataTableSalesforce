@@ -34,7 +34,6 @@ then zip "dist" directory and upload zip file to staticresource as "ReactTableRe
 
 <script>
 	var COMPONENT_ID = "Component3";
-	var RECORD_ID = "";
 	sforce.connection.sessionId = '{!GETSESSIONID()}';
 	var SFORCE_AJAX = sforce;
 	var REACT_TABLE_PARAMS = {};
